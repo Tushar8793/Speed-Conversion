@@ -1,3 +1,4 @@
 # Speed-Conversion
 This is a Speed Conversion Project.
-Authors - Tushar Sharma and Utkarsh Sharma
+<br>
+<b>Authors - Tushar Sharma and Utkarsh Sharma</b>
