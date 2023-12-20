@@ -1,11 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bricolage+Grotesque&family=Caveat:wght@500&family=Mooli&family=Nova+Square&family=Oswald:wght@500&family=Roboto+Condensed&family=Teko:wght@300&display=swap"
+        rel="stylesheet">
     <title>Speed-Conversion Project</title>
 </head>
+<style>
+    /*
+    not working
+    @font-face {
+        font-family: nb;
+        src: url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bricolage+Grotesque&family=Caveat:wght@500&family=Mooli&family=Nova+Square&family=Oswald:wght@500&family=Roboto+Condensed&family=Teko:wght@300&display=swap");
+    } */
+
+    * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: 'Anton', sans-serif;
+
+        /* font-family: nb; */
+        /* background-color: #8cdeeb; */
+    }
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+
+    }
+
+    #base {
+        height: 100%;
+        width: 100%;
+        background-color: #CAF5FC;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #centerbox {
+        position: relative;
+        background-color: #CA786D;
+        height: 50%;
+        width: 65%;
+        box-shadow: 10px 10px #65a5ae;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1%;
+
+    }
+
+    #heading {
+        position: absolute;
+        text-align: center;
+        font-size: 1.4rem;
+        top: 10%;
+        text-align: center;
+    }
+
+    #input {
+        padding: 2px 2px;
+        height: 15%;
+        width: 20%;
+        border: none;
+        border-radius: 2px;
+    }
+
+    #selectbox {
+        padding: 2px 2px;
+        height: 15%;
+        width: 10%;
+        border: none;
+        border-radius: 2px;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 450;
+    }
+
+    #input::placeholder {
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 450;
+    }
+
+    #result {
+        font-size: 3vh;
+        position: absolute;
+        bottom: 7%;
+    }
+
+    #submit {
+        /* padding: 2px 2px; */
+        height: 8%;
+        width: 10%;
+        border: none;
+        border-radius: 2px;
+        text-align: center;
+        position: absolute;
+        font-size: 2vh;
+        bottom: 23%;
+        background-color: #65a5ae;
+        cursor: pointer;
+        /* bottom: calc((50% - 10%)/2); no working properly */
+    }
+
+    #submit:hover {
+        height: 10%;
+        width: 12%;
+        background-color: #000000;
+        color: white;
+        /* box-shadow: 10px 10px black; */
+
+    }
+
+    #centerbox:hover {
+        box-shadow: 10px 10px black;
+    }
+</style>
+
 <body>
-    
+
+
+    <div id="base">
+
+        <div id="centerbox">
+            <label for="input" id="heading">
+                This is a Speed-Convertor
+            </label>
+
+            <input type="number" name="input" id="input" placeholder="Enter Speed">
+            <select name="input" id="selectbox">
+                <option value="ms">m/s</option>
+                <option value="kmhr">km/hr</option>
+            </select>
+
+            <input type="submit" id="submit" onclick="convertspeed()">
+
+
+            <div id="result">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function convertspeed() {
+
+            const inputval = document.getElementById("input").value;
+            // console.log(inputval);
+            const selectbox = document.getElementById("selectbox");
+            const selectvalue = selectbox.options[selectbox.selectedIndex].value;
+            // console.log(selectvalue);
+
+            let kmhrtoms = (val) => Math.round(val*(5/18));
+            // console.log(kmhrtoms(9));
+
+            
+
+            let mstokmhr = (val) => Math.round(val*(18/5));
+
+            let result;
+            if(selectvalue == "ms"){
+                result =  mstokmhr(inputval);
+            
+                document.querySelector("#result").innerHTML = `${result} Km/Hr` ;
+            }
+            else{
+                 result = kmhrtoms(inputval);
+                document.querySelector("#result").innerHTML = `${result} M/S`;
+            }
+                
+            
+
+        }
+
+    </script>
 </body>
+
 </html>
